@@ -1,0 +1,184 @@
+#:kivy 1.0
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: dp(10)
+    spacing: dp(10)
+
+    MDLabel:
+        text: "HR tools (App)"
+        font_style: "Button"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    MDLabel:
+        text: "TeamSystem - Lotus automation"
+        font_style: "Caption"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    ScrollView:
+        size_hint_y: 1
+        
+        MDList:
+            OneLineIconListItem:
+                text: "Dashboard"
+                
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "dashboard"
+                
+                IconLeftWidget:
+                    icon: "view-dashboard"
+            
+            OneLineIconListItem:
+                text: "Situazione ferie"
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "ferie"
+                
+                IconLeftWidget:
+                    icon: "bag-personal"
+            
+            OneLineIconListItem:
+                text: "Stampa LUL"
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "LUL"
+                
+                IconLeftWidget:
+                    icon: "chart-tree"
+            
+            OneLineIconListItem:
+                text: "Notifiche"
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "notifiche"
+                
+                IconLeftWidget:
+                    icon: "alert-box"
+            
+            OneLineIconListItem:
+                text: "Impostazioni"
+
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "settings"
+                
+                IconLeftWidget:
+                    icon: "cogs"
+                
+            
+Screen:
+    NavigationLayout:
+        type: "standard"
+        
+        ScreenManager:
+            id: screen_manager
+            
+            Screen:
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "HR tools"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    Widget:
+                        size_hint_y: 1
+            Screen:
+                name: "dashboard"
+                
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Dashboard"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    MDLabel:
+                        text: "Dashboard"
+                        halign: "center"
+                        font_style: "H1"
+                        size_hint: 1, 1
+            Screen:
+                name: "ferie"
+                
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Situazione ferie"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    MDLabel:
+                        text: "Situazione ferie"
+                        halign: "center"
+                        font_style: "H1"
+                        size_hint: 1, 1
+            Screen:
+                name: "LUL"
+                
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Stampa LUL"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    MDLabel:
+                        text: "Stampa LUL"
+                        halign: "center"
+                        font_style: "H1"
+                        size_hint: 1, 1
+            Screen:
+                name: "notifiche"
+                
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Notifiche"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    MDLabel:
+                        text: "Notifiche"
+                        halign: "center"
+                        font_style: "H1"
+                        size_hint: 1, 1
+            Screen:
+                name: "settings"
+                
+                BoxLayout:
+                    orientation: "vertical"
+
+                    MDToolbar:
+                        title: "Impostazioni"
+                        elevation: 10
+                        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    
+                    MDLabel:
+                        text: "Impostazioni"
+                        halign: "center"
+                        font_style: "H1"
+                        size_hint: 1, 1
+            
+        MDNavigationDrawer:
+            id: nav_drawer
+            padding: dp(10)
+            spacing: dp(10)
+            
+            ContentNavigationDrawer:
+                nav_drawer: nav_drawer
+                screen_manager: screen_manager
+            
+        
+    
